@@ -7,11 +7,13 @@ from torch_geometric.data import Data
 # Load dataset
 data = pd.read_csv("triplet_dataset.csv")
 
-node_features = torch.arange(len(data), dtype=torch.float).view(-1, 1) 
-edge_index = torch.tensor([[i, i] for i in range(len(data))], dtype=torch.long).t()
+# Dummy graph structure
+num_nodes = len(data)
+edge_index = torch.tensor([[i, i] for i in range(num_nodes)], dtype=torch.long).t()
+node_features = torch.arange(num_nodes, dtype=torch.float).view(-1, 1)
 labels = torch.tensor(data["Closeness"].values, dtype=torch.float)
 
-
+# Create PyG data object
 graph_data = Data(x=node_features, edge_index=edge_index, y=labels)
 
 # Define GNN model
@@ -27,7 +29,7 @@ class ProofGNN(torch.nn.Module):
         x = self.conv2(x, edge_index)
         return x
 
-# Train the GNN
+# Train GNN
 model = ProofGNN()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 loss_fn = torch.nn.MSELoss()
@@ -38,8 +40,7 @@ for epoch in range(50):
     loss = loss_fn(out.view(-1), graph_data.y)
     loss.backward()
     optimizer.step()
-    print(f"Epoch {epoch+1}/50, Loss: {loss.item():.4f}")
+    print(f"Epoch {epoch + 1}/50, Loss: {loss.item():.4f}")
 
-# Save the model
 torch.save(model.state_dict(), "proof_gnn.pth")
 print("Model trained and saved.")
