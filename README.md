@@ -39,27 +39,18 @@ The pipeline consists of the following stages:
 
 The following theorems are included in this project:
 
-1. **Theorem 1040**: Polynomial identity
-   \[
-   (a^2 + b^2) \cdot (c^2 + d^2) = (a \cdot c - b \cdot d)^2 + (b \cdot c + a \cdot d)^2
-   \]
+1. **Theorem 1**: Polynomial identity  
+   (a² + b²) * (c² + d²) = (a * c - b * d)² + (b * c + a * d)²
 
-2. **Theorem 1041**: Expansion of terms
-   \[
-   a(b - c)^2 + b(c - a)^2 + c(a - b)^2 = (b + c)(c + a)(a + b) - 8abc
-   \]
+2. **Theorem 2**: Expansion of terms  
+   a(b - c)² + b(c - a)² + c(a - b)² = (b + c)(c + a)(a + b) - 8abc
 
-3. **Theorem 1042**: Sum and product relation
-   \[
-   (a + b + 1)(a^2 + b^2 - ab - a - b + 1) = a^3 + b^3 - 3ab + 1
-   \]
+3. **Theorem 3**: Sum and product relation  
+   (a + b + 1)(a² + b² - ab - a - b + 1) = a³ + b³ - 3ab + 1
 
-4. **Theorem 1043**: Quadratic expansions
-   \[
-   (a + b + c)^2 + (a - b + c)^2 + (a + b - c)^2 + (b + c - a)^2 = 4(a^2 + b^2 + c^2)
-   \]
+4. **Theorem 4**: Quadratic expansions  
+   (a + b + c)² + (a - b + c)² + (a + b - c)² + (b + c - a)² = 4(a² + b² + c²)
 
-These theorems are implemented in Coq files (e.g., `theorem1.coq`, `theorem2.coq`) and executed as part of the pipeline.
 
 ---
 
